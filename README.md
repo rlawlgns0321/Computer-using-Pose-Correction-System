@@ -5,6 +5,7 @@
 이용자가 컴퓨터를 이용하면서 거북목 자세 등 바르지 않은 자세를 취하면 센서가 이를 파악하고 알람을 울려 자세 교정을 유도함과 동시에 그 빈도수를 데이터베이스에 저장하여 교정 현황을 사용자에게 제공한다.
 
 2. 시스템 구성도
+
 ![computer_pose](https://user-images.githubusercontent.com/48283895/56093962-98897380-5f09-11e9-954c-5811e65fa1b5.jpg)
 
                                            사진 출처 : 다음 뉴스문화
@@ -18,6 +19,7 @@
 
 
 3. 데이터 흐름도
+
 ![flow](https://user-images.githubusercontent.com/48283895/56093964-9b846400-5f09-11e9-9423-5fd6c811b4be.jpg) 
  1) 센서에서 경보가 발생하였을 때의 시간을 MySQL 데이터베이스로 보낸다.
  2) MySQL 데이터베이스로 저장한 데이터를 NodeJS를 이용하여 Amazon AWS Ubuntu 서버로 내보낸다.
