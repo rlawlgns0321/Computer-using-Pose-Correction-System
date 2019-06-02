@@ -1,5 +1,6 @@
 #include <Adafruit_VL53L0X.h>
 #include <math.h>
+#include <arduino.h>
 
 // address we will assign if dual sensor is present
 #define LOX1_ADDRESS 0x30
@@ -84,9 +85,20 @@ void read_dual_sensors() {
   Serial.print("The Contrast between 1 and 2 is : ");
   Serial.print(contrast);
 
+  double angle = atan2(23, contrast);
+  double real_angle = RAD_TO_DEG * angle;
  
   Serial.println();
-  Serial.print(atan2(15, contrast));
+  Serial.print(angle);
+  Serial.println();
+  Serial.print("The real angle is : ");
+  Serial.print(real_angle);
+  Serial.println();
+  if(real_angle < 60) {
+    digitalWrite(14, HIGH);
+    delay(400);
+    digitalWrite(14, LOW);
+  }
   Serial.println();
 }
 
@@ -98,7 +110,7 @@ void setup() {
 
   pinMode(SHT_LOX1, OUTPUT);
   pinMode(SHT_LOX2, OUTPUT);
-
+  pinMode(14, OUTPUT); // for LED
   Serial.println("Shutdown pins inited...");
 
   digitalWrite(SHT_LOX1, LOW);
